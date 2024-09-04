@@ -50,17 +50,17 @@ app.put('/api/pacientes/:id', (req, res) => {
 });
 
 // Veterinarios
-app.get('api/veterinarios', (req, res) => {
+app.get('/api/veterinarios', (req, res) => {
     res.json(veterinarios);
 });
 
-app.get('api/veterinarios/:id', (req, res) => {
+app.get('/api/veterinarios/:id', (req, res) => {
     const veterinario = veterinarios.find(v => v.id === parseInt(req.params.id));
     if (!veterinario) return res.status(404).send('Veterinario no encontrado');
     res.json(veterinario);
 });
 
-app.post('api/veterinarios', (req, res) => {
+app.post('/api/veterinarios', (req, res) => {
     const nuevoVeterinario = {
         id: veterinarios.length + 1,
         ...req.body
@@ -69,7 +69,7 @@ app.post('api/veterinarios', (req, res) => {
     res.status(201).json(nuevoVeterinario);
 });
 
-app.put('api/pacientes/:id', (req, res) => {
+app.put('/api/pacientes/:id', (req, res) => {
     const index = veterinarios.findIndex(v => v.id === parseInt(req.params.id));
     if (index == -1) return res.status(400).send('Veterinario no encontrado');
     veterinarios.splice(index, 1);
@@ -77,17 +77,17 @@ app.put('api/pacientes/:id', (req, res) => {
 });
 
 // Citas
-app.get('api/citas', (req, res) => {
+app.get('/api/citas', (req, res) => {
     res.json(citas);
 });
 
-app.get('api/citas/:id', (req, res) => {
+app.get('/api/citas/:id', (req, res) => {
     const cita = citas.find(c => c.id === parseInt(req.params.id));
     if (!cita) return res.status(404).send('Cita no encontrada');
     res.json(cita);
 });
 
-app.post('api/citas', (req, res) => {
+app.post('/api/citas', (req, res) => {
     const nuevaCita = {
         id: citas.length + 1,
         ...req.body
@@ -96,7 +96,7 @@ app.post('api/citas', (req, res) => {
     res.status(201).json(nuevaCita);
 });
 
-app.put('api/citas/:id', (req, res) => {
+app.put('/api/citas/:id', (req, res) => {
     const index = citas.findIndex(c => c.id === parseInt(req.params.id));
     if (index == -1) return resizeTo.status(400).send('Cita no encontrada');
     citas.splice(index, 1);
